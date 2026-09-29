@@ -1,0 +1,49 @@
+from graphics import *
+from math import sin, cos, radians
+
+def create_ngon(n, centerX, centerY, radius):
+    angle = 360 / n
+    points = []
+
+    for i in range(n):
+        theta = radians(i * angle)
+
+        x = centerX + radius * cos(theta)
+        y = centerY + radius * sin(theta)
+
+        points.append(Point(x, y))
+
+    polygon = Polygon(points)
+    return polygon
+
+def waitAndDraw(win, entry):
+    win.getMouse()
+
+    n = int(entry.getText())
+
+    poly = create_ngon(n, 250, 250, 150)
+    poly.draw(win)
+
+def main():
+    win = GraphWin("Polygon Grapher", 500, 500)
+
+    Text(Point(100, 30), "Number of Sides:").draw(win)
+
+    sidesBox = Entry(Point(250, 30), 5)
+    sidesBox.draw(win)
+
+    button = Rectangle(Point(350, 15), Point(450, 45))
+    button.draw(win)
+
+    label = Text(Point(400, 30), "Graph")
+    label.draw(win)
+
+    waitAndDraw(win, sidesBox)
+
+    label.setText("Exit")
+
+    win.getMouse()
+
+    win.close()
+
+main()

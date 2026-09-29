@@ -1,0 +1,11 @@
+def kToF(k):
+    return (9/5) * (k - 273.15) + 32
+
+def main():
+    print("Kelvin\tFahrenheit")
+    print("------------------")
+
+    for k in range(0, 301, 20):
+        print(f"{k}\t{kToF(k):.2f}")
+
+main()

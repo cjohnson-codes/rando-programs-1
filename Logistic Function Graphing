@@ -1,0 +1,28 @@
+from graphics import *
+
+def logistic(k, x):
+    return k * x * (1 - x)
+
+def main():
+    k = float(input("Enter k value: "))
+    x = float(input("Enter starting x value: "))
+    n = int(input("Enter number of points: "))
+
+    win = GraphWin("Logistic Function", 500, 500)
+
+    xPos = 50
+
+    for i in range(n):
+        x = logistic(k, x)
+
+        yPos = 450 - (x * 400)
+
+        pt = Point(xPos, yPos)
+        pt.draw(win)
+
+        xPos += 10
+
+    win.getMouse()
+    win.close()
+
+main()
